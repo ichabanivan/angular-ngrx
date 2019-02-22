@@ -1,1 +1,7 @@
-<app-item></app-item>
+<div class="row">
+  <div class="col">
+    <ul class="list-group">
+      <app-item *ngFor="let todo of todos" [todo]="todo"></app-item>
+    </ul>
+  </div>
+</div>

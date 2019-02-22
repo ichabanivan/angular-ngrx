@@ -1,3 +1,26 @@
-<p>
-  item works!
-</p>
+<li
+  class="list-group-item"
+>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col d-flex align-items-center justify-content-center">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+          <label class="custom-control-label" for="customSwitch1"></label>
+        </div>
+      </div>
+
+      <div class="col-8 d-flex align-items-center">
+          <p class="mb-0">{{todo.text}}</p>
+      </div>
+
+      <div class="col">
+        <p class="mb-0">{{todo.date}}</p>
+      </div>
+
+      <div class="col">
+        <button type="button" class="btn btn-danger w-100">Delete</button>
+      </div>
+    </div>
+  </div>
+</li>
