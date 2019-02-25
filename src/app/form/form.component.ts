@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment'
 import { Todo } from '../shared/todo.model';
-import moment from 'moment'
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -15,12 +15,16 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   }
 
+  onLoad() {
+    console.log('onLoad');
+  }
+
   onAdd() {
-    if (!this.name) returnж
+    if (!this.name) return
 
     const car = new Todo(
       this.name,
-      moment().format()
+      moment().format('ll')
     )
   }
 

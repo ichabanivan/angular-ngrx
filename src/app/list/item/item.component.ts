@@ -15,4 +15,11 @@ export class ItemComponent implements OnInit {
 
   @Input() todo: Todo
 
+  onCheck() {
+    console.log('onCheck')
+  }
+
+  onDelete() {
+    console.log('onDelete')
+  }
 }

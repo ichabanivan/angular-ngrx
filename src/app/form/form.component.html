@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-8">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="What needs to be done?">
+        <input type="text" class="form-control" placeholder="What needs to be done?" [(ngModel)]="name" name="name">
         <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button">Submit</button>
+          <button class="btn btn-outline-primary" type="button" (click)="onAdd()">Submit</button>
         </div>
       </div>
     </div>
 
     <div class="col-4">
       <div class="form-group">
-        <button class="btn btn-primary w-100" type="button">Load data</button>
+        <button class="btn btn-primary w-100" type="button" (click)="onLoad()">Load data</button>
       </div>
     </div>
   </div>
