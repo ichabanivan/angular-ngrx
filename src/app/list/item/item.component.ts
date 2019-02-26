@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../../shared/todo.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../redux/app.state';
+import { ACTIONS } from '../../redux/todos.action';
+import { TodosService } from '../../todos.service';
 
 @Component({
   selector: 'app-item',
@@ -7,19 +11,19 @@ import { Todo } from '../../shared/todo.model';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
+  constructor(
+    private store: Store<AppState>,
+  ) { }
 
-  constructor() { }
+  @Input() todo: Todo;
 
-  ngOnInit() {
-  }
-
-  @Input() todo: Todo
+  ngOnInit() {}
 
   onCheck() {
-    console.log('onCheck')
+    this.store.dispatch(new ACTIONS.UpdateTodo(this.todo));
   }
 
   onDelete() {
-    console.log('onDelete')
+    this.store.dispatch(new ACTIONS.DeleteTodo(this.todo));
   }
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment'
+import * as moment from 'moment';
 import { Todo } from '../shared/todo.model';
+import { TodosService } from '../todos.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../redux/app.state';
+import { ACTIONS } from '../redux/todos.action';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -8,24 +12,31 @@ import { Todo } from '../shared/todo.model';
 })
 export class FormComponent implements OnInit {
 
-  name: string = '';
+  name = '';
 
-  constructor() { }
+  constructor(
+    private todos: TodosService,
+    private store: Store<AppState>,
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onLoad() {
-    console.log('onLoad');
+    this.store.dispatch(new ACTIONS.LoadTodos());
   }
 
   onAdd() {
-    if (!this.name) return
+    if (!this.name) {
+      return;
+    }
 
-    const car = new Todo(
+    const todo = new Todo(
       this.name,
       moment().format('ll')
-    )
-  }
+    );
 
+    this.store.dispatch(new ACTIONS.AddTodo(todo));
+
+    this.name = '';
+  }
 }

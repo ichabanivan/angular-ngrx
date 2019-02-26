@@ -5,12 +5,12 @@
     <div class="row">
       <div class="col d-flex align-items-center justify-content-center">
         <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="customSwitch1" (change)="onCheck()">
-          <label class="custom-control-label" for="customSwitch1"></label>
+          <input name="checkbox" type="checkbox" class="custom-control-input" [id]="'done' + todo.id" [(ngModel)]="todo.done" (change)="onCheck()">
+          <label class="custom-control-label" [for]="'done' + todo.id"></label>
         </div>
       </div>
 
-      <div class="col-8 d-flex align-items-center">
+      <div class="col-6 d-flex align-items-center">
           <p class="mb-0">{{todo.text}}</p>
       </div>
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Todos, Todo } from '../shared/todo.model';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from '../redux/app.state';
+import { Todo } from '../shared/todo.model';
 
 @Component({
   selector: 'app-list',
@@ -7,14 +10,11 @@ import { Todos, Todo } from '../shared/todo.model';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  public todosState$: Observable<{ todos: Todo[]}>;
 
-  todos: Todo[] = [
-    new Todo('Todo', '10.10.2010'),
-    new Todo('Todo 2', '10.10.2008'),
-  ];
-
-  constructor() { }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
+    this.todosState$ = this.store.select('todos');
   }
 }
